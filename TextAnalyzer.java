@@ -23,7 +23,6 @@ public class TextAnalyzer {
 			/*
 			I played around with this part a lot in trying to take out special chars & punctuation but it would always 
 			end up with an off result that would cause miscounting words
-			Because all punctuation and special chars are attached to one word it wont offset with the word count
 			*/
 			//This replaces all the hyphens"-" with a space
 			String result = poem.replaceAll("\\p{Pd}", " ");
@@ -31,8 +30,10 @@ public class TextAnalyzer {
 			//Scanner to read through the poem
 			Scanner scan = new Scanner(result);
 			
+			//Storing words in a hashmap
 			HashMap<String, Integer> map = new HashMap<String, Integer>();
-          	//using while loop to read through the text file
+			
+          //using while loop to read through the string and store individual words
             while(scan.hasNextLine())
             {
     
@@ -53,8 +54,9 @@ public class TextAnalyzer {
                 	
             }
             
-         	//closing scanner
-            scan.close();
+     	//closing scanner
+        scan.close();
+			
             //Adding hashmap entries in descending order to a linkedhashmap
             LinkedHashMap<String, Integer> map2 = 
         		    map.entrySet()
@@ -62,7 +64,7 @@ public class TextAnalyzer {
         		       .sorted(Map.Entry.comparingByValue(Comparator.reverseOrder()))
         		       .collect(Collectors.toMap(e -> e.getKey(), 
         		                                 e -> e.getValue(), 
-        		                                 (e1, e2) -> null, // or throw an exception
+        		                                 (e1, e2) -> null, 
         		                                 () -> new LinkedHashMap<String, Integer>()));
           
             System.out.println(map2);
