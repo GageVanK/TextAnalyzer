@@ -9,7 +9,7 @@ import java.util.stream.Collectors;
 import org.jsoup.*;
 import org.jsoup.nodes.Document;
 
-public class WordCounter {
+public class TextAnalyzer {
 
 	public static void main(String[] args) {
 		
