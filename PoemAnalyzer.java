@@ -8,21 +8,22 @@ import java.util.stream.Collectors;
 import org.jsoup.*;
 import org.jsoup.nodes.Document;
 
+
 /**
- * Date: 4/13/2022
+ * Date: 4-13-2022
  * @author Gage Van Kuilenburg
  * @version 1.1
  */
 public class PoemAnalyzer {
-	
+
 	/**
 	 * Main Method
-	 * Uses JSoup to read in html and converts to a String to extract the poem
-	 * Words from poem are stored in a Hashmap to count word occurrences 
-	 * Hashmap is then transferred to a LinkedHashMap in descending order
-	 * @param args array of String arguments
+	 * Uses JSoup to read in html and converts to a String to extract the poem.
+	 * Words from poem are stored in a Hashmap to count word occurrences. 
+	 * Hashmap is then transferred to a LinkedHashMap in descending order.
+	 * @param args Array of String arguments
+	 * @throws IOException Would add try/catch but not necessary right now
 	 */
-
 	public static void main(String[] args) throws IOException {
 		
 		String poem = getPoem();
@@ -71,10 +72,15 @@ public class PoemAnalyzer {
 
 	} 
 	
+	/**
+	 * Uses JSoup to read in HTML and convert to a String to extract the Poem
+	 * @return returning Poem without hyphens
+	 * @throws IOException Throwing IOException
+	 */
 	public static String getPoem() throws IOException {
 		
 		//Jsoup reads in document
-		//Selecting p-tags from document --This leaves us with just the poem
+		//Selecting p-tags from document --This ends up only being the poem
 		//Removes Hyphens but keeps other punctuation as it doesnt affect the word count
 		Document doc = Jsoup.connect("https://www.gutenberg.org/files/1065/1065-h/1065-h.htm").get();
 		String poem =  doc.select("p").text();
@@ -82,3 +88,5 @@ public class PoemAnalyzer {
 		return strippedPoem;
 		
 	}
+
+}
