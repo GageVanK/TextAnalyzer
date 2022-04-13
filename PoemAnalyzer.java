@@ -7,7 +7,21 @@ import java.util.Scanner;
 import java.util.stream.Collectors;
 import org.jsoup.*;
 import org.jsoup.nodes.Document;
+
+/**
+ * Date: 4/13/2022
+ * @author Gage Van Kuilenburg
+ * @version 1.1
+ */
 public class PoemAnalyzer {
+	
+	/**
+	 * Main Method
+	 * Uses JSoup to read in html and converts to a String to extract the poem
+	 * Words from poem are stored in a Hashmap to count word occurrences 
+	 * Hashmap is then transferred to a LinkedHashMap in descending order
+	 * @param args array of String arguments
+	 */
 
 	public static void main(String[] args) throws IOException {
 		
